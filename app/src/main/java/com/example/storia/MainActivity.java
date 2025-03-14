@@ -210,39 +210,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (HelperClass.users != null) {
-                    progressDialog.show();
-                    Map<String, Object> update = new HashMap<>();
-                    update.put("postTitle", "");
-                    update.put("postDescription", "");
-                    update.put("postImage", "");
-                    update.put("status", "");
-                    dbRefUsers.child(HelperClass.users.getUserId()).updateChildren(update)
-                            .addOnCompleteListener(task -> {
-                                HelperClass.users.setPostTitle("");
-                                HelperClass.users.setPostDescription("");
-                                HelperClass.users.setPostImage("");
-                                HelperClass.users.setStatus("");
-                                SharedPrefHelper.saveUser(MainActivity.this, HelperClass.users);
-                                if (!listOfComments.isEmpty()) {
-                                    for (CommentModel commentModel : listOfComments) {
-                                        dbRefComments.child(commentModel.getId()).removeValue();
-                                    }
-                                    setMyStoryLayouts();
-                                    getUserStoriesFromDatabase();
-                                    getCommentsFromDatabase();
-                                    listOfComments.clear();
-                                } else {
-                                    setMyStoryLayouts();
-                                    getUserStoriesFromDatabase();
-                                    getCommentsFromDatabase();
-                                }
-                                progressDialog.dismiss();
-                                Toast.makeText(MainActivity.this, "Story deleted successfully", Toast.LENGTH_SHORT).show();
+                    new AlertDialog.Builder(MainActivity.this)
+                            .setTitle("Delete Story")
+                            .setMessage("Are you sure you want to delete your story?")
+                            .setPositiveButton("Yes", (dialog, which) -> {
+                                deleteStory();
                             })
-                            .addOnFailureListener(e -> {
-                                progressDialog.dismiss();
-                                Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                            });
+                            .setNegativeButton("No", (dialog, which) -> dialog.dismiss())
+                            .show();
                 }
             }
         });
@@ -257,6 +232,45 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
+    private void deleteStory() {
+        progressDialog.show();
+        Map<String, Object> update = new HashMap<>();
+        update.put("postTitle", "");
+        update.put("postDescription", "");
+        update.put("postImage", "");
+        update.put("status", "");
+        dbRefUsers.child(HelperClass.users.getUserId()).updateChildren(update)
+                .addOnCompleteListener(task -> {
+                    HelperClass.users.setPostTitle("");
+                    HelperClass.users.setPostDescription("");
+                    HelperClass.users.setPostImage("");
+                    HelperClass.users.setStatus("");
+                    SharedPrefHelper.saveUser(MainActivity.this, HelperClass.users);
+                    if (!listOfComments.isEmpty()) {
+                        for (CommentModel commentModel : listOfComments) {
+                            dbRefComments.child(commentModel.getId()).removeValue();
+                        }
+                        setMyStoryLayouts();
+                        getUserStoriesFromDatabase();
+                        getCommentsFromDatabase();
+                        listOfComments.clear();
+                    } else {
+                        setMyStoryLayouts();
+                        getUserStoriesFromDatabase();
+                        getCommentsFromDatabase();
+                    }
+                    progressDialog.dismiss();
+                    Toast.makeText(MainActivity.this, "Story deleted successfully", Toast.LENGTH_SHORT).show();
+                })
+                .addOnFailureListener(e -> {
+                    progressDialog.dismiss();
+                    Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
+    }
+
+
 
     @Override
     protected void onResume() {
