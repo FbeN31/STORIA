@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "825285732611",
+    "firebase_url": "https://storia-e8fdc-default-rtdb.firebaseio.com",
+    "project_id": "storia-e8fdc",
+    "storage_bucket": "storia-e8fdc.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:825285732611:android:bae920f3ec86556a84e136",
+        "android_client_info": {
+          "package_name": "com.example.storia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "825285732611-1qsqfpp4mfaeajmf7a68tga12btb9oeq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.storia",
+            "certificate_hash": "603db5226abaeddfdc0e29900b5bb8db1b12568a"
+          }
+        },
+        {
+          "client_id": "825285732611-a5sno800hhpqat2lv7jajk8pefld77jl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpAp9_1AExGzbSGKXlim03N6LFEa98H4g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "825285732611-a5sno800hhpqat2lv7jajk8pefld77jl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
