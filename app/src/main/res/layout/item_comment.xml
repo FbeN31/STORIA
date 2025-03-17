@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sodales dui ut mi posuere mollis. Morbi fermentum vel libero aliquam vestibulum. Praesent ut odio ut arcu dictum cursus."
+        android:text="hello hello hello my name is ben hello hello hello my name is ben hello hello hello my name is ben hello hello hello my name is ben hello hello hello my name is ben"
         android:textColor="@color/header"
         android:textSize="13sp"
         android:fontFamily="@font/lora_regular"/>
